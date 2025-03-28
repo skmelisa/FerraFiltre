@@ -1,0 +1,39 @@
+@model ferraFiltre.Models.ProductDetailView
+
+<h2>Product Details</h2>
+
+<div>
+    <strong>Filtre No:</strong> @Model.Product.filtre_no_b
+</div>
+
+<div>
+    <strong>Filtre Durumu:</strong> @Model.Product.filtre_durumu
+</div>
+
+<div>
+    <strong>Fotoðraf:</strong> <img src="@Model.Product.foto1" alt="Product Image" />
+</div>
+
+<h3>Cross References</h3>
+@if (Model.CrossReferences != null)
+{
+<div>
+    <strong>OEM References:</strong>
+    @foreach (var item in Model.CrossReferences.OEM)
+        {
+    <div>@item.FirmaAdi - @item.FiltreNoB</div>
+        }
+</div>
+
+<div>
+    <strong>Manufacturer References:</strong>
+    @foreach (var item in Model.CrossReferences.Manufacturer)
+        {
+    <div>@item.FirmaAdi - @item.FiltreNoB</div>
+        }
+</div>
+}
+else
+{
+<div>No cross references available.</div>
+}

@@ -1,6 +1,8 @@
 ﻿using ferraFiltre.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using ferraFiltre.Data;
+
 
 namespace ferraFiltre.Data
 {
@@ -9,9 +11,14 @@ namespace ferraFiltre.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        public DbSet<FerraOrjinalMuadil> FiltrelerIlk { get; set; }
-        //public DbSet<Filtreler> FiltersTwo { get; set; }
+        public DbSet<FerraOrjinalMuadil> FerraOrjinalMuadil{ get; set; }
+        public DbSet<Filtreler> Filtreler { get; set; }
+        public DbSet<CrossReferenceResult> CrossReferenceResults { get; set; }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Tuple içeren modelleri ignore et
+            modelBuilder.Ignore<List<ValueTuple<string, string>>>();
+        }
     }
 }

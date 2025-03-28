@@ -29,9 +29,9 @@ public class ExcelService
             using (var reader = ExcelReaderFactory.CreateReader(stream))
             {
                 var result = reader.AsDataSet();
-                DataTable dt = result.Tables[0]; // İlk sayfa
+                DataTable dt = result.Tables[0]; 
 
-                foreach (DataRow row in dt.Rows.Cast<DataRow>().Skip(1)) // İlk satırı atlıyoruz (başlık)
+                foreach (DataRow row in dt.Rows.Cast<DataRow>().Skip(1)) 
                 {
                     list.Add(new FiltreData
                     {
